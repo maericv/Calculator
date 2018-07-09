@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<h1> Calculator </h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+<h2> Name : {{fname + " " + lname}}</h2>
+<p>Number 1 : <input type="number" ng-model="num1"></p>
+<p>Number 2 : <input type="number" ng-model="num2"></p>
+<p>Number 3 : <input type="number" ng-model="num3"></p>
+<p>Number 4 : <input type="number" ng-model="num4"></p>
+<select ng-model="myvar">
+	<option value="add">Sum
+	<option value="subtract">Difference
+	<option value="multiply">Total
+	<option value="average">Average
+</select>	
+
+
+  <hr>
+  <div ng-switch="myvar">
+	<div ng-switch-when="add">	
+		<h2>Sum : {{num1 + num2 + num3 + num4}}</h2>
+	</div>
+  	<div ng-switch-when="subtract">	
+		<h2>Difference : {{num1 - num2 - num3 - num4}}</h2>
+	</div>
+	<div ng-switch-when="multiply">	
+		<h2>Product : {{num1 * num2 * num3 * num4}}</h2>
+	</div>
+	<div ng-switch-when="average">	
+		<h2>Average : {{(num1 + num2 + num3 + num4) / 4}}</h2>
+	</div>
+	<div ng-switch-default>
+	<p> Select Value </p>
+	</div>
+
+</div>
+<script>
+var app = angular.module("myApp",[]);
+
+app.controller("myCtrl", function($scope) {
+
+	$scope.fname = "Eric";
+	$scope.lname = "Ma";
+	$scope.num1 = 0;	
+	$scope.num2 = 0;	
+	$scope.num3 = 0;
+	$scope.num4 = 0;
+});
+</script>
+
+</body>
+</html>
+

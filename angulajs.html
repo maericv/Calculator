@@ -1,0 +1,67 @@
+ <!DOCTYPE html>
+<html lang="en-US">
+<link rel="stylesheet" href="style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<h1> Calculator </h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+
+  <form name="myForm">
+  <p>First Name : <input type="text" name="fname" ng-model="fname" required>
+  <span ng-show="myForm.fname.$touched && myForm.fname.$invalid">The first name is required.</span></p> 
+  
+  <p>Last Name : <input type="text" name="lname" ng-model="lname" required>
+  <span ng-show="myForm.lname.$touched && myForm.lname.$invalid">The last name is required.</span></p> 
+  
+  <p>Number 1 : <input type="number" name="num1" ng-model="num1" required>
+  <span ng-show="myForm.num1.$touched">Please enter a number greater than zero.</span></p> 
+  <p>Number 2 : <input type="number" name="num2" ng-model="num2" required>
+  <span ng-show="myForm.num2.$touched">Please enter a number greater than zero.</span></p> 
+  <p>Number 3 : <input type="number" name="num3" ng-model="num3" required>
+  <span ng-show="myForm.num3.$touched">Please enter a number greater than zero.</span></p> 
+  <p>Number 4 : <input type="number" name="num4" ng-model="num4" required>  
+  <span ng-show="myForm.num4.$touched">Please enter a number greater than zero.</span></p> 
+  <p>Calculator Mode : <select ng-model="myVar">
+	<option value="Add">Add
+	<option value="Subtract">Subtract
+	<option value="Multiply">Multiply
+	<option value="Average">Average
+  </select>
+  </form>
+  
+  <hr>
+  <h2>Name : {{fname + " " + lname}}</h2>
+  <div ng-switch="myVar">
+	<div ng-switch-when="Add">	
+		<h2>Sum : {{num1 + num2 + num3 + num4}}</h2>
+	</div>
+  	<div ng-switch-when="Subtract">	
+		<h2>Difference : {{num1 - num2 - num3 - num4}}</h2>
+	</div>
+	<div ng-switch-when="Multiply">	
+		<h2>Product : {{num1 * num2 * num3 * num4}}</h2>
+	</div>
+	<div ng-switch-when="Average">	
+		<h2>Average : {{(num1 + num2 + num3 + num4) / 4}}</h2>
+	</div>
+	<div ng-switch-default>
+	<p> </p>
+	</div>
+</div>
+<script>
+
+var app = angular.module("myApp", []);
+
+app.controller("myCtrl", function($scope) {
+	$scope.num1 = 0;	
+	$scope.num2 = 0;	
+	$scope.num3 = 0;
+	$scope.num4 = 0;
+
+	
+   
+});
+</script>
+
+</body>
+</html> 
